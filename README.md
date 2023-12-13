@@ -690,3 +690,15 @@ public static void Main(string[] args)
         Console.WriteLine(x);
     }
 ```
+```csharp
+    int[] nums = { 5, 123, 25,49,16,3, 23, 123, 12, 3, 3, 21 };
+
+    var nms = from x in nums
+            where (int)Math.Sqrt(x)*(int)Math.Sqrt(x)==x
+            orderby x descending
+            select x*10;
+
+    foreach (int x in nms) {
+        Console.WriteLine(x);
+    }
+```
