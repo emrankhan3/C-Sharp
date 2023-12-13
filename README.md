@@ -667,14 +667,26 @@ public static void Main(string[] args)
 - [x] Linq
 
 ```csharp
-                string[] dogs = {"k 9","tin min", "ko ko",
-            "kat ley", "kroo", "grook"};
-            var dg = from dog in dogs
-                     where dog.Contains("o")
-                     orderby dog descending
-                     select dog;
-            foreach(var dog in dg)
-            {
-                Console.WriteLine(dog);
-            }
+    string[] dogs = {"k 9","tin min", "ko ko",
+    "kat ley", "kroo", "grook"};
+    var dg = from dog in dogs
+                where dog.Contains("o")
+                orderby dog descending
+                select dog;
+    foreach(var dog in dg)
+    {
+        Console.WriteLine(dog);
+    }
+```
+
+```csharp
+    int[] nums = { 5, 123, 25,49,16,3, 23, 123, 12, 3, 3, 21 };
+
+    var nms = from x in nums
+                where (int)Math.Sqrt(x)*(int)Math.Sqrt(x)==x
+                select x;
+
+    foreach (int x in nms) {
+        Console.WriteLine(x);
+    }
 ```
