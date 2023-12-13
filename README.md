@@ -701,4 +701,10 @@ public static void Main(string[] args)
     foreach (int x in nms) {
         Console.WriteLine(x);
     }
+
+    nums[0] = 312;
+    Console.WriteLine(nms.GetType());
+    var ls = nms.ToList<int>();
+    var arr = nms.ToArray<int>();
+
 ```
