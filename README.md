@@ -665,7 +665,8 @@ public static void Main(string[] args)
 
 - [x] IList, IEnumerable, IQueryable, List (Difference between them)
 - [x] Linq
-      `cs
+
+```csharp
                 string[] dogs = {"k 9","tin min", "ko ko",
             "kat ley", "kroo", "grook"};
             var dg = from dog in dogs
@@ -676,4 +677,4 @@ public static void Main(string[] args)
             {
                 Console.WriteLine(dog);
             }
-`
+```
