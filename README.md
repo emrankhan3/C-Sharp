@@ -708,3 +708,46 @@ public static void Main(string[] args)
     var arr = nms.ToArray<int>();
 
 ```
+```charp
+	using EmployeeManagement.Models.EntityModels;
+using Microsoft.EntityFrameworkCore;
+namespace EmployeeManagementApp.DatabaseContext
+{
+    public class EmployeeDbContext : DbContext
+    {
+        public EmployeeDbContext() { }
+        public EmployeeDbContext(DbContextOptions<EmployeeDbContext> options) : base(options)
+        {}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Server=.;Database=EmployeeDB;Trusted_Connection=true;TrustServerCertificate=True");
+            }
+            optionsBuilder.UseLazyLoadingProxies(true);
+            base.OnConfiguring(optionsBuilder);
+        }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            var emp =  modelBuilder.Entity<Employee>();
+            emp.HasKey(a => a.Id);
+            emp.Property(a=>a.Name).HasMaxLength(50);
+            emp.Property(a => a.Salary).IsRequired();
+            emp.Ignore(a => a.Info);
+            emp.Property(a=>a.Mail).IsRequired(false);
+            emp.Property(a=>a.Address).IsRequired(false);
+            //emp.HasOne(a => a.Department).WithMany(a => a.Employees).HasForeignKey("DeptID");
+        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    //base.OnConfiguring(optionsBuilder);
+        //    optionsBuilder.UseSqlServer("Server=.;Database=EmployeeDB;Trusted_Connection=True;TrustServerCertificate=True");
+        //}
+
+    
+    }
+}
+
+```
